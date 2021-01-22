@@ -1,0 +1,356 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
+@import url(http://fonts.googleapis.com/css?family=Lato:400,900);
+@import '../helpers/mixins';
+ul {
+  list-style: none;
+  padding: 0;
+  margin:0;
+}
+#calendar {
+  #month {
+    text-align: center;
+    background-color: #323232;
+    position: relative;
+
+    > p {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .arrow {
+      @include border-radius(50%);
+      border-style: solid;
+      border-color: #ff3232;
+      position: absolute;
+      top: 50%;
+      @include translate(0, -50%);
+      color: #fff;
+      display: table;
+
+      i {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  #week {
+    border-left: 1px solid #dfdfdf;
+    border-right: 1px solid #dfdfdf;
+
+    > li {
+      width: 14.28571428571429%;
+      float: left;
+
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+      color: #323232;
+      text-align: center;
+    }
+  }
+
+  #days {
+    overflow: hidden;
+    border: 1px solid #dfdfdf;
+    > li {
+      width: 14.28571428571429%;
+      float: left;
+      position: relative;
+      overflow: hidden;
+
+      &:nth-child(7n+7) {
+        border-right: none;
+      }
+
+      span {
+        font-family: 'Lato', serif;
+        font-weight: 900;
+        color: #323232;
+        @include border-radius(50%);
+        text-align: center;
+        display: block;
+      }
+
+      &.inactive {
+        span {
+          color: #b3b2b2;
+        }
+
+        h6 {
+          color: #bbbbbb;
+        }
+
+        p {
+          color: #d1d1d1;
+        }
+      }
+
+      &.marked {
+
+        span {
+          background-color: #ff3232;
+          color: #fff!important;
+        }
+      }
+
+      &.inactive {
+        &.marked {
+          span {
+            background-color: #bbbbbb;
+          }
+        }
+
+      }
+
+      &.featured {
+        &:after {
+          position: absolute;
+          top: 10px;
+          right: 13px;
+          //content: "\e908";
+          //font-family: 'icons';
+          color: #ff3232;
+        }
+
+        &.inactive {
+          &:after {
+            color: #bbbbbb;
+          }
+        }
+      }
+
+      h6 {
+        font-size: 10px;
+        letter-spacing: 0;
+        color: #323232;
+        margin: 10px 0 5px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      p {
+        font-size: 11px;
+        line-height: 16px;
+        color: #898989;
+      }
+
+      &.current-day {
+        span {
+          border: 1px solid #ff3232;
+        }
+      }
+      &.weekend-day {
+        span {
+          color: #ff3232;
+        }
+        &.inactive {
+          span {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.events-list {
+  border: 1px solid #dfdfdf;
+  border-top: none;
+  border-bottom: none;
+  > li {
+    padding: 10px 10px 15px;
+    border-bottom: 1px solid #dfdfdf;
+    position: relative;
+    &.inactive {
+      span {
+        color: #b3b2b2;
+      }
+
+      h6 {
+        color: #bbbbbb;
+      }
+
+      p {
+        color: #d1d1d1;
+      }
+    }
+
+    &.marked {
+
+      span {
+        background-color: #ff3232;
+        color: #fff;
+      }
+    }
+    &.inactive {
+      &.marked {
+        span {
+          background-color: #bbbbbb;
+        }
+      }
+
+    }
+    span {
+      display: block;
+      @include border-radius(50%);
+      text-align: center;
+      font-family: 'Lato', serif;
+      font-weight: 900;
+    }
+    h6 {
+      margin: 10px 0 5px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    p {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      color: #737373;
+      font-size: 12px;
+    }
+  }
+}
+@media (min-width: 1025px) {
+  #calendar {
+    #month {
+      height: 50px;
+
+      > p {
+        line-height: 50px;
+        font-size: 18px;
+      }
+
+      .arrow {
+        width: 30px;
+        height: 30px;
+        border-width: 3px;
+
+        i {
+          font-size: 12px;
+        }
+
+        &.left {
+          left: 25px;
+        }
+
+        &.right {
+          right: 25px;
+        }
+      }
+    }
+
+    #week {
+      height: 55px;
+
+      > li {
+        line-height: 55px;
+        font-size: 16px;
+      }
+    }
+
+    #days {
+      border-bottom: none;
+      > li {
+        height: 120px;
+        padding: 15px;
+        border-bottom: 1px solid #dfdfdf;
+        border-right: 1px solid #dfdfdf;
+        span {
+          font-size: 12px;
+          width: 25px;
+          height: 25px;
+          line-height: 25px;
+        }
+        &.marked {
+          padding: 10px 15px 15px 10px;
+        }
+      }
+    }
+  }
+  .events-list {
+    li {
+      span {
+        height: 25px;
+        width: 25px;
+        line-height: 25px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  #calendar {
+    #month {
+      height: 40px;
+
+      > p {
+        line-height: 40px;
+        font-size: 16px;
+      }
+
+      .arrow {
+        width: 20px;
+        height: 20px;
+        border-width: 2px;
+        font-size: 8px;
+
+        &.left {
+          left: 10px;
+        }
+
+        &.right {
+          right: 10px;
+        }
+      }
+    }
+
+    #week {
+      height: 40px;
+
+      > li {
+        line-height: 40px;
+        font-size: 12px;
+      }
+    }
+
+    #days {
+      border-bottom: 1px solid #dfdfdf;
+      padding: 10px 0 20px;
+      > li {
+        height: 30px;
+        padding: 0 15px;
+        span {
+          font-size: 11px;
+          margin: 0 auto;
+          line-height: 30px;
+        }
+        &.marked,
+        &.current-day{
+          padding: 5px 10px 0;
+          span {
+            margin: 0 auto;
+            height: 20px;
+            width: 20px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
+  }
+  .events-list {
+    li {
+      span {
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        font-size: 11px;
+      }
+    }
+  }
+}
