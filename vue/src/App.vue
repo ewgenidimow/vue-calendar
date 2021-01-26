@@ -1,36 +1,16 @@
 <template>
   <div id="app">
-    <app-header></app-header>
-    <transition name="fade" mode="out-in">
-      <router-view></router-view>
-    </transition>
+    <app-calendar></app-calendar>
   </div>
 </template>
 
 <script>
-  import Header from "./components/layout/Header";
+  import Calendar from "./components/Calendar";
 
   export default {
     name: 'app',
     components: {
-      appHeader: Header,
+      appCalendar: Calendar,
     },
-    data() {
-      return {}
-    }
   }
 </script>
-
-<style lang="scss">
-  .fade-enter-active,
-  .fade-leave-active {
-    transition-duration: 0.3s;
-    transition-property: opacity;
-    transition-timing-function: ease;
-  }
-
-  .fade-enter,
-  .fade-leave-active {
-    opacity: 0
-  }
-</style>
