@@ -4,7 +4,7 @@
 
 ## Build Setup 
 ``` bash
-# cd vue
+cd vue
 
 # install dependencies
 npm install
