@@ -2,7 +2,7 @@
   "name": "vue",
   "description": "A Vue.js project",
   "version": "1.0.0",
-  "author": "Evgeni Dimov <evgeni@orm.bg>",
+  "author": "Evgeni Dimov <ewgenidimow@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
