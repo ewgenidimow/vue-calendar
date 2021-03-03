@@ -1,11 +1,10 @@
-# Vue  event calendar
+# vue
 
 > A Vue.js project
 
-## Build Setup 
-``` bash
-cd vue
+## Build Setup
 
+``` bash
 # install dependencies
 npm install
 
